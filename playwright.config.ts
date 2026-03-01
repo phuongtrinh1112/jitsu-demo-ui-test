@@ -7,6 +7,7 @@ import { defineConfig, devices } from '@playwright/test';
 // import dotenv from 'dotenv';
 // import path from 'path';
 // dotenv.config({ path: path.resolve(__dirname, '.env') });
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -44,10 +45,16 @@ export default defineConfig({
         },
       },
     },
-
     {
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
+    },
+    {
+      name: 'api',
+      use: {
+        ...devices['Desktop Chrome'],
+        headless: true,
+      },
     },
 
     /* Test against mobile viewports. */

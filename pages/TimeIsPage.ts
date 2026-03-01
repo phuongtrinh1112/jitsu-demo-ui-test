@@ -4,7 +4,7 @@ import { WEB_LINK } from '../constants/web-link';
 import { getCurrentDate, calculateTimeToANumber } from '../utils/DateCalculation';
 
 export class TimeIsPage {
- readonly searchBoxLocator = '[id="q"]';
+  readonly searchBoxLocator = '[id="q"]';
   readonly cityTextLocator = '[id="msgdiv"]';
   readonly currentDateLocator = '[title="Press for calendar"]';
   readonly currentTimeLocator = '[id="clock0_bg"]';
@@ -25,6 +25,7 @@ export class TimeIsPage {
    * @returns text which store city name from web element
    */
   async searchCity(cityName: string): Promise<string | null> {
+    await this.page.locator(this.searchBoxLocator).waitFor({ state: 'visible', timeout: 10000 });
     await this.page.locator(this.searchBoxLocator).click();
     await this.page.locator(this.searchBoxLocator).fill(cityName);
     await this.page.locator(this.searchBoxLocator).press('Enter');
@@ -47,7 +48,7 @@ export class TimeIsPage {
    * Verify the current date is displayed correctly by comparing the printed date on UI with the current date
    */
   async verifyCurrentDate(): Promise<void> {
-    await this.page.waitForSelector(this.currentDateLocator, { timeout: 10000 });
+    await this.page.locator(this.currentDateLocator).waitFor({ state: 'visible', timeout: 10000 });
     //get printed date on UI and compare with current date
     const printedDate = await this.page.locator(this.currentDateLocator).textContent();
     console.log('Printed date: ', printedDate);
@@ -63,7 +64,7 @@ export class TimeIsPage {
    * @param second duration time
    */
     async verifyCurrentTimeRunning(second : number): Promise<void> {
-        await this.page.waitForSelector(this.currentTimeLocator, { timeout: 10000 });
+        await this.page.locator(this.currentTimeLocator).waitFor({ state: 'visible', timeout: 10000 });
         const timeLocator = this.page.locator(this.currentTimeLocator);
         const time1 = await timeLocator.textContent();
         console.log('Time 1: ', time1);
