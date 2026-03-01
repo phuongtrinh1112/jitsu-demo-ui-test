@@ -1,0 +1,29 @@
+{
+  "name": "jitsu-demo-ui-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_TLS_REJECT_UNAUTHORIZED=0 playwright test",
+    "test:chromium": "NODE_TLS_REJECT_UNAUTHORIZED=0 playwright test --project=chromium",
+    "test:firefox": "NODE_TLS_REJECT_UNAUTHORIZED=0 playwright test --project=firefox",
+    "test:headed": "NODE_TLS_REJECT_UNAUTHORIZED=0 playwright test --headed",
+    "test:debug": "NODE_TLS_REJECT_UNAUTHORIZED=0 playwright test --debug"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phuongtrinh1112/jitsu-demo-ui-test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/phuongtrinh1112/jitsu-demo-ui-test/issues"
+  },
+  "homepage": "https://github.com/phuongtrinh1112/jitsu-demo-ui-test#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^25.3.2"
+  }
+}
